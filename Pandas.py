@@ -163,22 +163,22 @@ print ("Logistic Regression accuracy =", lR_score*100,"%")
 print ("Suport Vector Machine accuracy =", SVM_score*100,"%")
 print ("Random Forest accuracy =", RF_score*100,"%")
 from sklearn import svm
-#
-#
-# import joblib
-# Grade_data=pd.read_excel('Data.xlsx')
-# # Learning with the Model
-# X=Grade_data.drop (columns=['SNAMES ','Total Marks','Marks /20', 'Grading '])
-# y=Grade_data['Grading ']
-# model= svm.SVC(kernel='linear')
-# model.fit(X.values, y)
-# joblib.dump(model, 'grade-recommender.joblib')
 
-# Quiz=int (input ("Enter Quiz Marks :"))
-# Assgn= input ("Enter Assignment Marks: ")
-# Mid=int (input ("Enter Mid Exam Marks Marks :"))
-# Final= input ("Enter Final Exam Marks: ")
-# #Predict from the created model
-# model=joblib.load('grade-recommender.joblib')
-# predictions = model.predict ([[Quiz,Assgn,Mid,Final]])
-# print("The Grade you will obtain is:",predictions )
+
+import joblib
+Grade_data=pd.read_excel('Data.xlsx')
+# Learning with the Model
+X=Grade_data.drop (columns=['SNAMES ','Total Marks','Marks /20', 'Grading '])
+y=Grade_data['Grading ']
+model= svm.SVC(kernel='linear')
+model.fit(X.values, y)
+joblib.dump(model, 'grade-recommender.joblib')
+
+Quiz=int (input ("Enter Quiz Marks :"))
+Assgn= input ("Enter Assignment Marks: ")
+Mid=int (input ("Enter Mid Exam Marks Marks :"))
+Final= input ("Enter Final Exam Marks: ")
+#Predict from the created model
+model=joblib.load('grade-recommender.joblib')
+predictions = model.predict ([[Quiz,Assgn,Mid,Final]])
+print("The Grade you will obtain is:",predictions )
